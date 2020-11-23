@@ -1,0 +1,19 @@
+{
+  "name": "wstools/push-notice",
+  "description": "推送服务SDK",
+  "authors": [
+    {
+      "name": "kangjiaxing",
+      "email": "jiaxing1919@163.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "wstools\\push-notice\\": "src/"
+    }
+  }
+}

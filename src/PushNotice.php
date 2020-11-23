@@ -22,24 +22,53 @@ class PushNotice
     {
         self::$_sign = $sign;
     }
-    public  static  function regCid($uid){
-        self::doPush(['uid'=>$uid],'push@RegCid');
+
+
+
+    /*
+     * 注册CID(如果存在直接修改)
+     *@param   uid 用户ID
+     * @param  cid
+     * */
+    public  static  function regCid($uid,$cid){
+      return  self::doPush(['uid'=>$uid,'cid'=>$cid],'push@RegCid');
     }
-    /**
-     * 发送验证码
-     */
-    public static function pushOneMsg($uid,$msg,$title,$url)
-    {
-        $content=[
-            'uid'=>$uid,
-            'msg'=>$msg,
-            'title'=>$title,
-            'ulr'=>$url,
-        ];
-        return self::doPush($content,'');
+
+    /*
+     * 发送多条或者一条信息
+     *
+     * uid  用户uid
+     * title 发送的标题
+     * content  发送的内容
+     * url 打开地址
+     * param 参数[]
+     * url_type 1 在app内打开   2 在某一个网站打开
+     *
+     * */
+
+    public  static  function  PushNotice($uid,$tltle,$content,$url,$param=[],$url_type=1){
+        $data=[
+             'uid'=>$uid,
+             'title'=>$tltle,
+             'content'=>$content,
+             'url'=>$url,
+             'param'=>$param,
+             'url_type'=>$url_type
+            ];
+        return self::doPush($data,'push@DoPush');
     }
 
 
+    public  static  function  PushAll($tltle,$content,$url,$param=[],$url_type=1){
+            $data=[
+                'title'=>$tltle,
+                'content'=>$content,
+                'url'=>$url,
+                'param'=>$param,
+                'url_type'=>$url_type
+            ];
+            return self::doPush($data,'push@DoPush');
+    }
 
     protected static function doPush($content,$route)
     {

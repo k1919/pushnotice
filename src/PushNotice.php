@@ -15,6 +15,7 @@ class PushNotice
 
 
 
+
     protected static $_sign;
 
     public static function setSign($sign)

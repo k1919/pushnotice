@@ -52,7 +52,7 @@ class PushNotice
              'title'=>$tltle,
              'content'=>$content,
              'url'=>$url,
-             'param'=>$param,
+             'param'=>json_encode($param),
              'url_type'=>$url_type
             ];
         return self::doPush($data,'push@DoPush');
@@ -64,7 +64,7 @@ class PushNotice
                 'title'=>$tltle,
                 'content'=>$content,
                 'url'=>$url,
-                'param'=>$param,
+                'param'=>json_encode($param),
                 'url_type'=>$url_type
             ];
             return self::doPush($data,'push@DoPush');

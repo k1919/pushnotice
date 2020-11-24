@@ -9,12 +9,12 @@ class ComposerStaticInitb80fcb673f43f66c59b1ce00822ddb11
     public static $prefixLengthsPsr4 = array (
         'w' => 
         array (
-            'wstools\\push-notice\\' => 20,
+            'wenshi\\push\\notice\\' => 19,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'wstools\\push-notice\\' => 
+        'wenshi\\push\\notice\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

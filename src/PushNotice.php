@@ -5,7 +5,7 @@
  * Date: 2019-05-20
  * Time: 10:55
  */
-namespace wstools\push\notice;
+namespace wenshi\push\notice;
 
 
 class PushNotice

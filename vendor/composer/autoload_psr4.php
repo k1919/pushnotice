@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'wstools\\push-notice\\' => array($baseDir . '/src'),
+    'wenshi\\push\\notice\\' => array($baseDir . '/src'),
 );

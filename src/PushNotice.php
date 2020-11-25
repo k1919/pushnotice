@@ -24,7 +24,6 @@ class PushNotice
     }
 
 
-
     /*
      * 注册CID(如果存在直接修改)
      *@param   uid 用户ID

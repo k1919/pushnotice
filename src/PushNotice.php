@@ -34,40 +34,49 @@ class PushNotice
       return  self::doPush(['uid'=>$uid,'cid'=>$cid],'push@RegCid');
     }
 
+
+    /*
+     * 退出关闭
+     *@param   uid 用户ID
+     * @param  cid
+     * */
+    public  static  function closeCid($uid,$cid){
+        return  self::doPush(['uid'=>$uid,'cid'=>$cid],'push@CloseCid');
+    }
+
     /*
      * 发送多条或者一条信息
      *
-     * uid  用户uid
+     * uid  用户uid(多个已逗号隔开)
      * title 发送的标题
      * content  发送的内容
-     * url 打开地址
-     * param 参数[]
-     * url_type 1 在app内打开   2 在某一个网站打开
-     *
+     * data 参数[]
      * */
 
-    public  static  function  PushNotice($uid,$tltle,$content,$url,$param=[],$url_type=1){
+    public  static  function  Push($uids,$tltle,$content,$data){
         $data=[
-             'uid'=>$uid,
+             'uids'=>$uids,
              'title'=>$tltle,
              'content'=>$content,
-             'url'=>$url,
-             'param'=>json_encode($param),
-             'url_type'=>$url_type
+             'data'=>json_encode($data),
             ];
-        return self::doPush($data,'push@DoPush');
+        return self::doPush($data,'push@push');
     }
 
-
-    public  static  function  PushAll($tltle,$content,$url,$param=[],$url_type=1){
-            $data=[
-                'title'=>$tltle,
-                'content'=>$content,
-                'url'=>$url,
-                'param'=>json_encode($param),
-                'url_type'=>$url_type
-            ];
-            return self::doPush($data,'push@DoPush');
+    /*
+        * 发送全部
+        * title 发送的标题
+        * content  发送的内容
+        * data 参数[]
+        *
+        * */
+    public  static  function  pushToApp($tltle,$content,$data){
+        $data=[
+            'title'=>$tltle,
+            'content'=>$content,
+            'data'=>json_encode($data),
+        ];
+        return self::doPush($data,'push@push');
     }
 
     protected static function doPush($content,$route)
@@ -81,7 +90,7 @@ class PushNotice
         if($request['code'] == '1'){
             return true;
         }else{
-            return false;
+            return $request['msg'];
         }
     }
 

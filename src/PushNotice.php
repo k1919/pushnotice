@@ -52,7 +52,7 @@ class PushNotice
      * data 参数[]
      * */
 
-    public  static  function  Push($uids,$tltle,$content,$data){
+    public  static  function  Push($uids,$tltle,$content,$data=[]){
         $data=[
              'uids'=>$uids,
              'title'=>$tltle,
@@ -69,13 +69,13 @@ class PushNotice
         * data 参数[]
         *
         * */
-    public  static  function  pushToApp($tltle,$content,$data){
+    public  static  function  pushToApp($tltle,$content,$data=[]){
         $data=[
             'title'=>$tltle,
             'content'=>$content,
             'data'=>json_encode($data),
         ];
-        return self::doPush($data,'push@push');
+        return self::doPush($data,'push@pushToApp');
     }
 
     protected static function doPush($content,$route)
